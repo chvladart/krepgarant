@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #fafafa;
+    --foreground: #121212;
+    --brand-wine: #42131e;
+    --brand-red: #d0112b;
+    --brand-crimson: #9e1428;
+    --surface-light: #f4f3ef;
+    --surface-card: #ffffff;
+    --border-subtle: rgba(18, 18, 18, 0.08);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #42131e;
+    color: #ffffff;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom fine line utilities and typography */
+.hairline-border {
+  border-color: rgba(18, 18, 18, 0.08);
+}
+
+.hairline-border-t {
+  border-top: 1px solid rgba(18, 18, 18, 0.08);
+}
+
+.hairline-border-b {
+  border-bottom: 1px solid rgba(18, 18, 18, 0.08);
+}
+
+.hairline-border-l {
+  border-left: 1px solid rgba(18, 18, 18, 0.08);
+}
+
+.hairline-border-r {
+  border-right: 1px solid rgba(18, 18, 18, 0.08);
+}
+
+/* Smooth fade in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* CAD blueprint background patterns */
+.bg-grid-blueprint {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(18, 18, 18, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(18, 18, 18, 0.03) 1px, transparent 1px);
 }
